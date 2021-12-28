@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="container__header">
+    <h1 class="container__header--title">Wypełnij formularz</h1>
+    <span class="container__header--subtitle">Skontaktujemy się z tobą najszybiej jak to będzie możliwe</span>
+  </div>
+
+  <form class="container__form" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+    <div class="container__form--group">
+      <label for="companyName">Nazwa firmy</label>
+      <input id="companyName" type="text" placeholder="np. Apple" formControlName="companyName">
+    </div>
+    <div class="container__form--group">
+      <label for="nipNumber">Numer NIP</label>
+      <input id="nipNumber" type="text" placeholder="123-45-55-640" formControlName="companyNipNumber">
+    </div>
+    <div class="container__form--group">
+      <label for="emailAddress">E-mail</label>
+      <input id="emailAddress" type="email" placeholder="example@expl.co" formControlName="emailAddress">
+    </div>
+    <div class="container__form--group">
+      <label for="phoneNumber">Numer telefonu</label>
+      <input id="phoneNumber" type="tel" placeholder="123 456 789" formControlName="phoneNumber">
+    </div>
+    <div class="container__form--group">
+      <label for="messageSubject">Temat</label>
+      <select id="messageSubject" formControlName="messageSubject">
+        <option *ngFor="let subject of allSubjects" [ngValue]="subject">{{ subject }}</option>
+      </select>
+    </div>
+    <div class="container__form--group">
+      <label for="messageContent">Treść wiadomości</label>
+      <textarea id="messageContent" placeholder="Dzień dobry," formControlName="messageContent"></textarea>
+    </div>
+    <div class="container__form--agreement">
+      <label for="formAgreement">Wyrażam zgodę na kontakt telefoniczny w sprawach marketingowych</label>
+      <input id="formAgreement" type="checkbox" formControlName="formAgreement">
+    </div>
+    <button
+      type="submit"
+      class="container__form--submit"
+      [disabled]="messageForm.invalid"
+    >
+      Wyślij wiadomość
+    </button>
+  </form>
+</div>
