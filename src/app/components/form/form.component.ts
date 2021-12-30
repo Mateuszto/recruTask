@@ -16,16 +16,22 @@ export class FormComponent implements OnInit {
     this.messageForm = this.fb.group({
       companyName: ['', Validators.required],
       companyNipNumber: [''],
-      emailAddress: [''],
+      emailAddress: ['', [Validators.required, Validators.email]],
       phoneNumber: [''],
-      messageSubject: [''],
+      messageSubject: [this.allSubjects[0]],
       messageContent: [''],
       formAgreement: ['', Validators.requiredTrue],
     })
   }
 
+  get control() {
+    return this.messageForm.controls;
+  }
+
   sendMessage() {
-    console.log(this.messageForm.value);
+    if(this.messageForm.valid) {
+      console.log(this.messageForm.value);
+    }
   }
 
 }

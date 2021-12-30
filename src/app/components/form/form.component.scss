@@ -1,7 +1,43 @@
 @import "../../shared/styles/_variables";
+@import "../../shared/styles/mixins";
 
 * {
   font-family: 'Poppins', sans-serif;
+}
+
+.form-group {
+  background: $bg-gray;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px 0;
+  padding: 8px 20px 12px 20px;
+
+  border-radius: 10px;
+}
+
+.form-label {
+  color: $black;
+
+  padding-bottom: 6px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-input {
+  @include form-field
+}
+
+.form-textarea {
+  resize: none;
+
+  @include form-field
+}
+
+.form-select {
+  @include form-field
 }
 
 .container {
@@ -31,33 +67,6 @@
 
     font-size: 16px;
     font-weight: 400;
-  }
-
-
-  &__form--group {
-    background: $bg-gray;
-
-    display: flex;
-    flex-direction: column;
-
-    margin: 10px 0;
-    padding: 8px 20px 12px 20px;
-
-    border-radius: 10px;
-
-    label {
-      color: $black;
-
-      padding-bottom: 6px;
-
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    input {
-      border: none;
-      background: transparent;
-    }
   }
 
   &__form--submit {

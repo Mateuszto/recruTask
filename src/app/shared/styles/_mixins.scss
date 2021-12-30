@@ -1,0 +1,8 @@
+@mixin form-field {
+  background: transparent;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
