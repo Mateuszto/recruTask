@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="container__header">
+  <div class="container__header flex__center-center">
     <h1 class="container__header--title">Wypełnij formularz</h1>
     <span class="container__header--subtitle">Skontaktujemy się z tobą najszybiej jak to będzie możliwe</span>
   </div>
@@ -10,9 +10,10 @@
       <label class="form-label" for="companyName">Nazwa firmy</label>
       <input class="form-input" id="companyName" type="text" placeholder="np. Apple" formControlName="companyName">
     </div>
-    <span *ngIf="control.companyName.errors.required && control.companyName.touched">
-      Wrong wrong wrong
-    </span>
+    <div class="form-error" *ngIf="control.companyName.errors && control.companyName.touched">
+      <span *ngIf="control.companyName.errors?.required">Nazwa firmy jest wymagana</span>
+      <span *ngIf="control.companyName.errors?.minlength">Wprowadź minimum dwa znaki</span>
+    </div>
     <div class="form-group">
       <label class="form-label" for="nipNumber">Numer NIP</label>
       <input class="form-input" id="nipNumber" type="text" placeholder="1234555640" formControlName="companyNipNumber">
@@ -20,6 +21,10 @@
     <div class="form-group">
       <label class="form-label" for="emailAddress">E-mail</label>
       <input class="form-input" id="emailAddress" type="email" placeholder="example@expl.co" formControlName="emailAddress">
+    </div>
+    <div class="form-error" *ngIf="control.emailAddress.errors && control.emailAddress.touched">
+      <span *ngIf="control.emailAddress.errors?.required">Email jest wymagany</span>
+      <span *ngIf="control.emailAddress.errors?.email">Wprowadź poprawny adres email</span>
     </div>
     <div class="form-group">
       <label class="form-label" for="phoneNumber">Numer telefonu</label>
@@ -41,15 +46,24 @@
         formControlName="messageContent">
       </textarea>
     </div>
-    <div class="form-group--agreement">
-      <label class="form-label" for="formAgreement">Wyrażam zgodę na kontakt telefoniczny w sprawach marketingowych</label>
-      <input id="formAgreement" type="checkbox" formControlName="formAgreement">
+    <div class="form-error" *ngIf="control.messageContent.errors && control.messageContent.touched">
+      <span *ngIf="control.messageContent.errors?.required">Treść wiadomości jest wymagana</span>
+      <span *ngIf="control.messageContent.errors?.minlength">Wiadomość jest za krótka</span>
     </div>
-    <button
-      type="submit"
-      class="container__form--submit"
-    >
-      Wyślij wiadomość
-    </button>
+    <div class="form-group--agreement">
+      <input id="formAgreement" type="checkbox" formControlName="formAgreement">
+      <label class="form-agreement-label" for="formAgreement">Wyrażam zgodę na kontakt telefoniczny w sprawach marketingowych</label>
+    </div>
+    <div class="form-error" *ngIf="control.formAgreement.errors && form.submitted">
+      <span>Zaakcpetuj regulamin</span>
+    </div>
+    <div class="flex__center-center">
+      <button
+        type="submit"
+        class="container__form--submit"
+      >
+        Wyślij wiadomość
+      </button>
+    </div>
   </form>
 </div>

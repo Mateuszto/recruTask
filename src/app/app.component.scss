@@ -1,0 +1,6 @@
+@import "shared/styles/_mixins";
+
+.main {
+  @include flex-center-center;
+  padding: 44px;
+}

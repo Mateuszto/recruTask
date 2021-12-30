@@ -8,18 +8,18 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class FormComponent implements OnInit {
   messageForm: FormGroup;
-  allSubjects= ['Współpraca', 'Pomoc Techniczna', 'Rekrutacja'];
+  allSubjects= ['Współpraca', 'Pomoc Techniczna', 'Rekrutacja', 'Inny'];
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.messageForm = this.fb.group({
-      companyName: ['', Validators.required],
+      companyName: ['', [Validators.required, Validators.minLength(2)]],
       companyNipNumber: [''],
       emailAddress: ['', [Validators.required, Validators.email]],
       phoneNumber: [''],
       messageSubject: [this.allSubjects[0]],
-      messageContent: [''],
+      messageContent: ['', [Validators.required, Validators.minLength(16)]],
       formAgreement: ['', Validators.requiredTrue],
     })
   }
