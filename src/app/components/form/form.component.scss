@@ -1,0 +1,100 @@
+@import "../../shared/styles/_variables";
+@import "../../shared/styles/mixins";
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.flex__center-center {
+  @include flex-center-center;
+}
+
+.container {
+  width: 580px;
+  padding: 64px 44px;
+
+  border-radius: 24px;
+  box-shadow: 0 0 16px -3px rgba(111, 111, 111, 0.45);
+
+  &__header {
+    flex-direction: column;
+
+    margin-bottom: 64px;
+  }
+
+  &__header--title {
+    color: $black;
+
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__header--subtitle {
+    color: $gray;
+
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &__form--submit {
+    cursor: pointer;
+    color: $white;
+    font-weight: 700;
+
+    background: $green;
+    padding: 18px 48px;
+    margin-top: 18px;
+
+    border: none;
+    border-radius: 30px;
+  }
+}
+
+.form-group {
+  background: $bg-gray;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px 0;
+  padding: 8px 20px 12px 20px;
+
+  border-radius: 10px;
+}
+
+.form-label {
+  color: $black;
+
+  padding-bottom: 6px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-agreement-label {
+  color: $gray;
+  font-size: 14px;
+}
+
+.form-input,
+.form-select {
+  @include form-field
+}
+
+.form-textarea {
+  resize: none;
+
+  @include form-field
+}
+
+.form-error {
+  background: $error-red;
+
+  color: $white;
+  font-size: 12px;
+  font-weight: 600;
+
+  padding: 8px 20px;
+  margin: 6px 0 12px 0;
+  border-radius: 10px;
+}
